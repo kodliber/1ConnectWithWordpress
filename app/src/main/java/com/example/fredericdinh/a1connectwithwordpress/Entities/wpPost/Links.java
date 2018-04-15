@@ -4,7 +4,9 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-//@Generated("com.robohorse.robopojogenerator")
+import javax.annotation.Generated;
+
+@Generated("com.robohorse.robopojogenerator")
 public class Links
 {
 

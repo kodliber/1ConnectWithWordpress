@@ -2,7 +2,9 @@ package com.example.fredericdinh.a1connectwithwordpress.Entities.wpPost;
 
 import com.google.gson.annotations.SerializedName;
 
-//@Generated("com.robohorse.robopojogenerator")
+import javax.annotation.Generated;
+
+@Generated("com.robohorse.robopojogenerator")
 public class AuthorItem
 {
 
