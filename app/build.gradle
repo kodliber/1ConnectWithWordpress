@@ -30,5 +30,6 @@ dependencies {
     // https://mvnrepository.com/artifact/com.google.code.findbugs/jsr305
 //    implementation group: 'com.google.code.findbugs', name: 'jsr305', version: '3.0.2'
     implementation 'javax.annotation:jsr250-api:1.0'
+    implementation 'com.squareup.picasso:picasso:2.71828'
 
 }
