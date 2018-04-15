@@ -75,14 +75,14 @@ public class Asyncws extends AsyncTask<String, Integer, String>
         Request request = new Request.Builder()
 //                .header("Authorization", tokenEncode)
                 .method( "GET", jsonBody )
-                .url( "https://demo.wp-api.org/wp-json/wp/v2/posts" )
+                .url( "https://demo.wp-api.org/wp-json/wp/v2/posts/1" )
                 .build();
 
         try
         {
             Response response = client.newCall( request ).execute();
             retour = response.body().string();
-            Log.e( "TagOK", retour );
+//            Log.e( "TagOK", retour );
 
      /*       if ( response.isSuccessful() )
             {
@@ -110,7 +110,7 @@ public class Asyncws extends AsyncTask<String, Integer, String>
         super.onPostExecute( s );
         kallbak.jaifini( s );
 
-        Toast.makeText( c, "retour =" + s, Toast.LENGTH_LONG ).show();
+//        Toast.makeText( c, "retour =" + s, Toast.LENGTH_LONG ).show();
     }
 
     public interface Kallbak
