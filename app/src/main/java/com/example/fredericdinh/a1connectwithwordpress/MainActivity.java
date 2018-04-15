@@ -1,10 +1,12 @@
 package com.example.fredericdinh.a1connectwithwordpress;
 
 import android.content.Context;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
+
+import com.example.fredericdinh.a1connectwithwordpress.Entities.wpPost.Wppost;
+import com.google.gson.Gson;
 
 /**
  * Cette version récupère le résultat de la tâche asynchrone
@@ -19,6 +21,9 @@ public class MainActivity extends AppCompatActivity
     String res;
     Context context;
     static Asyncws netthread;
+    Gson jsonObject = new Gson();
+    Wppost wp = null;
+
 
     @Override
     protected void onCreate( Bundle savedInstanceState )
@@ -33,12 +38,14 @@ public class MainActivity extends AppCompatActivity
         {
             protected void onPostExecute( String result )
             {
-                txtresponse.setText( result );
+                wp = jsonObject.fromJson( result, Wppost.class );
+                txtresponse.setText( wp.getSlug().toString() );
             }
         };
         netthread.execute();
 
 
     }
+
 
 }
