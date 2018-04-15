@@ -6,11 +6,12 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity implements Asyncws.Kallbak
+public class MainActivity extends AppCompatActivity
 {
     TextView txtresponse;
     String res;
     Context context;
+    static Asyncws netthread;
 
     @Override
     protected void onCreate( Bundle savedInstanceState )
@@ -19,28 +20,20 @@ public class MainActivity extends AppCompatActivity implements Asyncws.Kallbak
         setContentView( R.layout.activity_main );
         context = this;
 
-//        View view = findViewById( R.id. )
 
         txtresponse = findViewById( R.id.txtResponse );
 
         // un essai avec okHTTP
-        Asyncws netthread = new Asyncws( this, this );
-        netthread.execute(); // s'agissant d'un thread asynchrone, le résultat est confié à un callback implémenté plus bas
+        netthread = new Asyncws()
+        {
+            protected void onPostExecute( String result )
+            {
+                txtresponse.setText( result );
+            }
+        };
+        netthread.execute();
 
         // TODO essayer avec Retrofit 2
     }
 
-    @Override
-    public void jaifini( String output )
-    {
-        if ( output != null )
-        {
-            txtresponse.setText( output );
-            Log.e( "Tag", output );
-
-        } else
-        {
-            Log.e( "AIE", "bug" );
-        }
-    }
 }
