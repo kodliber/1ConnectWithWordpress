@@ -1,39 +1,46 @@
 package com.example.fredericdinh.a1connectwithwordpress;
 
+import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 
-import java.io.IOException;
-
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
-
-public class MainActivity extends AppCompatActivity
+public class MainActivity extends AppCompatActivity implements Asyncws.Kallbak
 {
     TextView txtresponse;
+    String res;
+    Context context;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
+    protected void onCreate( Bundle savedInstanceState )
     {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        super.onCreate( savedInstanceState );
+        setContentView( R.layout.activity_main );
+        context = this;
 
-        GetUrl urlReader = new GetUrl();
-        String response = null;
+//        View view = findViewById( R.id. )
 
-        // TODO Fred à mettre dans une methode asynchrone asynctask
-        try
+        txtresponse = findViewById( R.id.txtResponse );
+
+        // un essai avec okHTTP
+        Asyncws netthread = new Asyncws( this, this );
+        netthread.execute(); // s'agissant d'un thread asynchrone, le résultat est confié à un callback implémenté plus bas
+
+        // TODO essayer avec Retrofit 2
+    }
+
+    @Override
+    public void jaifini( String output )
+    {
+        if ( output != null )
         {
-            response = urlReader.run("https://demo.wp-api.org/wp-json/");
-            txtresponse = findViewById(R.id.txtResponse);
-            txtresponse.setText(response.toString());
-        } catch (IOException e)
+            txtresponse.setText( output );
+            Log.e( "Tag", output );
+
+        } else
         {
-            e.printStackTrace();
+            Log.e( "AIE", "bug" );
         }
-
-
     }
 }
