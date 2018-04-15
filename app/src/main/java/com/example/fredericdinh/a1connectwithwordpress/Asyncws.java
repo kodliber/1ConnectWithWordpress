@@ -11,10 +11,12 @@ import okhttp3.Response;
 
 public class Asyncws extends AsyncTask<String, Integer, String>
 {
+    String url;
 
-    public Asyncws()
+    public Asyncws(String url)
     {
 //        wppost = jso;
+        this.url = url;
 
     }
 
@@ -42,7 +44,8 @@ public class Asyncws extends AsyncTask<String, Integer, String>
         Request request = new Request.Builder()
 //                .header("Authorization", tokenEncode)
                 .method( "GET", jsonBody )
-                .url( "https://demo.wp-api.org/wp-json/wp/v2/posts/1" )
+//                .url( "https://demo.wp-api.org/wp-json/wp/v2/posts/1" )
+                .url( url )
                 .build();
 
         try

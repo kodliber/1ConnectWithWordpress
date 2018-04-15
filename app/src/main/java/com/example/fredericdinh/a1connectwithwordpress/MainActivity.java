@@ -38,7 +38,8 @@ public class MainActivity extends AppCompatActivity
         postContent = findViewById( R.id.txtContent );
 
         // un essai avec okHTTP
-        netthread = new Asyncws()
+//        netthread = new Asyncws("http://vergersurbains.org/wp-json/wp/v2/media/2994")
+        netthread = new Asyncws("https://demo.wp-api.org/wp-json/wp/v2/posts/1")
         {
             protected void onPostExecute( String result )
             {
