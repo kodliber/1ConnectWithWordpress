@@ -6,6 +6,12 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
 
+/**
+ * Cette version récupère le résultat de la tâche asynchrone
+ * en définissant directement OnPostExecute en appelant le constructeur.
+ * Plus simple que définir un callback.
+ * Désavantages ?
+ */
 public class MainActivity extends AppCompatActivity
 {
     TextView txtresponse;
@@ -19,8 +25,6 @@ public class MainActivity extends AppCompatActivity
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_main );
         context = this;
-
-
         txtresponse = findViewById( R.id.txtResponse );
 
         // un essai avec okHTTP
