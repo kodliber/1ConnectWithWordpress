@@ -31,20 +31,19 @@ public class Asyncws extends AsyncTask<String, Integer, String>
     {
 
         String retour = "";
-        String tokenPost = "hello";
-        String tokenEncode = "";
-        String tokenReturn = "";
 
         OkHttpClient client = new OkHttpClient();
 
-        //Méthode JSON
-        MediaType JSON = MediaType.parse( "application/json; charset=utf-8" );
+        //On interroge WordPress via JSON
+    /*
+     MediaType JSON = MediaType.parse( "application/json; charset=utf-8" );
         String json = "{'user':'toto','password':'titi'}";
+        */
         RequestBody jsonBody = null;
 
         Request request = new Request.Builder()
 //                .header("Authorization", tokenEncode)
-                .method( "GET", jsonBody )
+                .method( "GET", jsonBody )  // dans ce cas, GET ne demande pas de corps
                 .url( "https://demo.wp-api.org/wp-json/wp/v2/posts/1" )
                 .build();
 

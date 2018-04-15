@@ -11,6 +11,7 @@ import android.widget.TextView;
  * en définissant directement OnPostExecute en appelant le constructeur.
  * Plus simple que définir un callback.
  * Désavantages ?
+ * TODO essayer avec Retrofit 2
  */
 public class MainActivity extends AppCompatActivity
 {
@@ -37,7 +38,7 @@ public class MainActivity extends AppCompatActivity
         };
         netthread.execute();
 
-        // TODO essayer avec Retrofit 2
+
     }
 
 }
