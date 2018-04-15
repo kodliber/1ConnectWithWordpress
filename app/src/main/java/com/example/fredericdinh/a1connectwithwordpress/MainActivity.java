@@ -1,8 +1,11 @@
 package com.example.fredericdinh.a1connectwithwordpress;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.fredericdinh.a1connectwithwordpress.Entities.wpPost.Wppost;
@@ -20,6 +23,7 @@ public class MainActivity extends AppCompatActivity
     TextView postSlug;
     TextView postTitle;
     TextView postContent;
+    Button bouton;
     String res;
     Context context;
     static Asyncws netthread;
@@ -36,6 +40,17 @@ public class MainActivity extends AppCompatActivity
         postSlug = findViewById( R.id.txtSlug );
         postTitle = findViewById( R.id.txtTitle );
         postContent = findViewById( R.id.txtContent );
+        bouton = findViewById( R.id.btn );
+
+        bouton.setOnClickListener( new View.OnClickListener()
+        {
+            @Override
+            public void onClick( View v )
+            {
+                Intent intent = new Intent( context, MediaActivity.class );
+                startActivity( intent );
+            }
+        } );
 
         // un essai avec okHTTP
 //        netthread = new Asyncws("http://vergersurbains.org/wp-json/wp/v2/media/2994")

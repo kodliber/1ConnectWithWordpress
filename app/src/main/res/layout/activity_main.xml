@@ -29,5 +29,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="auteur" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn"
+            android:text="Test des media" />
     </LinearLayout>
 </ScrollView>
