@@ -75,7 +75,7 @@ public class Asyncws extends AsyncTask<String, Integer, String>
         Request request = new Request.Builder()
 //                .header("Authorization", tokenEncode)
                 .method( "GET", jsonBody )
-                .url( "https://demo.wp-api.org/wp-json/wp/v2/posts" )
+                .url( "https://demo.wp-api.org/wp-json/wp/v2/posts/1" )
                 .build();
 
         try

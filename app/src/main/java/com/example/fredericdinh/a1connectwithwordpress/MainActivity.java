@@ -6,6 +6,14 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
 
+import java.util.concurrent.ExecutionException;
+
+/**
+ * Essai de connexion à un endpoint de Wordpress
+ *
+ * @txtresponse le textView qui affiche le résultat de la requete
+ */
+
 public class MainActivity extends AppCompatActivity implements Asyncws.Kallbak
 {
     TextView txtresponse;
@@ -15,21 +23,37 @@ public class MainActivity extends AppCompatActivity implements Asyncws.Kallbak
     @Override
     protected void onCreate( Bundle savedInstanceState )
     {
+        String test = "init";
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_main );
         context = this;
-
-//        View view = findViewById( R.id. )
 
         txtresponse = findViewById( R.id.txtResponse );
 
         // un essai avec okHTTP
         Asyncws netthread = new Asyncws( this, this );
-        netthread.execute(); // s'agissant d'un thread asynchrone, le résultat est confié à un callback implémenté plus bas
+
+        try
+        {
+            test = netthread.execute().get(); // s'agissant d'un thread asynchrone, le résultat est confié à un callback implémenté plus bas
+        } catch ( InterruptedException e )
+        {
+            e.printStackTrace();
+        } catch ( ExecutionException e )
+        {
+            e.printStackTrace();
+        }
+
+        txtresponse.setText( test );
 
         // TODO essayer avec Retrofit 2
     }
 
+    /**
+     * Callback de la classe Asyncws
+     *
+     * @param output résultat de la requête
+     */
     @Override
     public void jaifini( String output )
     {
