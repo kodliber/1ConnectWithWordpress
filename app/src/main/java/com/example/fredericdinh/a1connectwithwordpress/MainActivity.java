@@ -17,7 +17,9 @@ import com.google.gson.Gson;
  */
 public class MainActivity extends AppCompatActivity
 {
-    TextView txtresponse;
+    TextView postSlug;
+    TextView postTitle;
+    TextView postContent;
     String res;
     Context context;
     static Asyncws netthread;
@@ -31,7 +33,9 @@ public class MainActivity extends AppCompatActivity
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_main );
         context = this;
-        txtresponse = findViewById( R.id.txtResponse );
+        postSlug = findViewById( R.id.txtSlug );
+        postTitle = findViewById( R.id.txtTitle );
+        postContent = findViewById( R.id.txtContent );
 
         // un essai avec okHTTP
         netthread = new Asyncws()
@@ -39,7 +43,9 @@ public class MainActivity extends AppCompatActivity
             protected void onPostExecute( String result )
             {
                 wp = jsonObject.fromJson( result, Wppost.class );
-                txtresponse.setText( wp.getSlug().toString() );
+                postSlug.setText( "Slug : " + wp.getSlug().toString() );
+                postTitle.setText( "Titre : " + wp.getTitle().getRendered().toString() );
+                postContent.setText( "Corps : " + wp.getContent().getRendered().toString() );
             }
         };
         netthread.execute();

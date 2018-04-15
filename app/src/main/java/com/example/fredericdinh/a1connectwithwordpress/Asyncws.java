@@ -27,10 +27,7 @@ public class Asyncws extends AsyncTask<String, Integer, String>
     @Override
     protected String doInBackground( String... strings )
     {
-
-
         String retour = "";
-
         OkHttpClient client = new OkHttpClient();
 
         //On interroge WordPress via JSON
@@ -41,6 +38,7 @@ public class Asyncws extends AsyncTask<String, Integer, String>
         RequestBody jsonBody = null;
 
         // dans ce cas, GET ne demande pas de corps
+        // pas besoin d'authentification pour lire le flux de posts
         Request request = new Request.Builder()
 //                .header("Authorization", tokenEncode)
                 .method( "GET", jsonBody )
@@ -53,7 +51,6 @@ public class Asyncws extends AsyncTask<String, Integer, String>
             retour = response.body().string();
 
             Log.e( "TagOK", retour );
-
         } catch ( Exception e )
         {
             Log.e( "TagErr", e.getMessage() );
